@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Install Docker') {
             steps {
-                sh 'ansible-playbook installdocker.yaml'
+                sh 'ansible-playbook -i aws_ec2.yaml installdocker.yaml'
             }
         }
     }   
