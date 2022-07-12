@@ -1,6 +1,8 @@
 ---
 - hosts: tag_Name_DockerServer
   become: yes
+  vars:
+    ansible_ssh_private_key_file: "/home/ubuntu/.ssh/id_rsa"
   tasks:
 # install packages to allow apt to use a repository over HTTPS:
   - name: Install docker packages
@@ -55,7 +57,7 @@
 
 # sudo groupadd docker
   - name: Create "docker" group
-    groups:
+    group:
       name: "{{ docker_group }}"
       state: present
 
