@@ -1,7 +1,7 @@
 ---
-hosts: all
+- hosts: tag_Name_DockerServer
+  become: yes
   tasks:
-
 # install packages to allow apt to use a repository over HTTPS:
   - name: Install docker packages
     apt:
@@ -54,14 +54,14 @@ hosts: all
 # This is optional you may to add your user to docker group 
 
 # sudo groupadd docker
-- name: Create "docker" group
- group:
-   name: "{{ docker_group }}"
-   state: present
+  - name: Create "docker" group
+    groups:
+      name: "{{ docker_group }}"
+      state: present
 
 # sudo usermod -aG docker root
-- name: Add remote "ubuntu" user to "docker" group
- user:
-   name: "{{ remote_user }}"
-   group: "{{ docker_group }}"
-   append: yes
+  - name: Add remote ubuntu user to docker group
+    user:
+      name: "{{ remote_user }}"
+      group: "{{ docker_group }}"
+      append: yes
