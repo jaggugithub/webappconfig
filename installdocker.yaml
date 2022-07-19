@@ -1,6 +1,8 @@
 ---
 - hosts: tag_Name_DockerServer
-  become: yes
+  remote_user: ubuntu
+  become: true
+  become_user: root
   tasks:
 # install packages to allow apt to use a repository over HTTPS:
   - name: Install docker packages
