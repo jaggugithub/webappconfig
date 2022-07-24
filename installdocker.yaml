@@ -56,10 +56,10 @@
 # This is optional you may to add your user to docker group 
 
 # sudo groupadd docker
-  - name: Create "docker" group
-    group:
-      name: "{{ docker_group }}"
-      state: present
+  # - name: Create "docker" group
+  #   group:
+  #     name: "{{ docker_group }}"
+  #     state: present
 
 # sudo usermod -aG docker root
   - name: Add remote ubuntu user to docker group
